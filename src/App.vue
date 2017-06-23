@@ -24,8 +24,20 @@
 
 <script>
 import TodoInput from './components/TodoInput'
+import store from './store'
 
 export default {
+  mounted () {
+    this.todos = store.fetch()
+  },
+
+  watch: {
+    todos: {
+      deep: true,
+      handler: store.save
+    }
+  },
+
   components: {
     TodoInput
   },
