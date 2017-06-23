@@ -1,6 +1,6 @@
 // 載入待測目標
-import store from 'src/store'
-// 用chai套件來做assertion
+import store from '@/store'
+// 用chai套件來做 assertion
 import chai from 'chai'
 chai.should()
 
