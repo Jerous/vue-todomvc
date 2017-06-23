@@ -2,12 +2,8 @@
   <div id="app" class="todoapp">
     <header class="header">
       <h1>todos</h1>
-      <input class="new-todo"
-        autofocus autocomplete="off"
-        placeholder="What needs to be done?"
-        v-model="newTodo"
-        @keyup.enter="addTodo"
-      >
+      <!-- 接收子元件的事件來觸發自己的方法 -->
+      <todo-input @add-todo="addTodo"></todo-input>
     </header>
     <!-- v-cloak會讓{{ }}被編譯完後再讓元素出現-->
     <section class="main" v-show="todos.length" v-cloak>
@@ -23,7 +19,13 @@
 </template>
 
 <script>
+import TodoInput from './components/TodoInput'
+
 export default {
+  components: {
+    TodoInput
+  },
+
   data () {
     return {
       newTodo: '',
@@ -32,16 +34,11 @@ export default {
   },
 
   methods: {
-    addTodo () {
-      const todo = this.newTodo && this.newTodo.trim()
-      if (!todo) {
-        return
-      }
+    addTodo (todo) {
       this.todos.push({
         title: todo,
         completed: false
       })
-      this.newTodo = ''
     }
   }
 }
