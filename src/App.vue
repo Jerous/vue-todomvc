@@ -5,11 +5,14 @@
       <!-- 接收子元件的事件來觸發自己的方法 -->
       <todo-input @add-todo="addTodo"></todo-input>
     </header>
-    <!-- v-cloak會讓{{ }}被編譯完後再讓元素出現-->
+    <!-- v-cloak會讓{{}}被編譯完後再讓元素出現-->
     <section class="main" v-show="todos.length" v-cloak>
       <ul class="todo-list">
-        <li class="todo" v-for="todo in todos" >
+        <li class="todo" 
+          :class="{ completed: todo.completed }"
+          v-for="todo in todos" :key="todo.title">
           <div class="view">
+            <input class="toggle" type="checkbox" v-model="todo.completed">
             <label for="">{{ todo.title }}</label>
           </div>
         </li>
