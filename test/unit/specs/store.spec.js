@@ -19,4 +19,14 @@ describe('Store', () => {
     // assert，用should.to.dee.equal來驗證結果
     actual.should.to.deep.equal(expected)
   })
+
+  it('應可儲存資料到 localStorage 中', function () { // arrange
+    const STORAGE_KEY = 'vue-todomvc'
+    const expected = '["test"]'
+    // act，測試重點是資料存入有沒有用JSON.stringify轉換過
+    store.save(['test'])
+    // assert
+    const actual = localStorage.getItem(STORAGE_KEY)
+    actual.should.to.deep.equal(expected)
+  })
 })
