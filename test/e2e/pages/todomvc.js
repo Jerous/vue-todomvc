@@ -47,4 +47,18 @@ module.exports = function (browser) {
     return browser
       .assert.cssClassPresent(firstTodoItem, 'completed')
   }
+
+  this.deleteTodo = () => {
+    return browser
+      // moveToElement 是將滑鼠移到元素上的指定坐標
+      .moveToElement('.todo-list > .todo:first-child', 10, 10)
+      .click('.todo-list > .todo:first-child > .view > button.destroy')
+  }
+
+  this.shouldGetEmptyTodoList = () => {
+    return browser
+      // assert.elementCount 是自訂的 assertion
+      // test/e2e/custom-assertions/elementCount.js
+      .assert.elementCount('.todo', 0)
+  }
 }
