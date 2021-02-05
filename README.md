@@ -1,6 +1,6 @@
 # vue-todomvc
 
-> A Vue.js project for e2e and unit test
+> A Vue.js project for e2e and unit test.
 
 ## Build Setup
 
